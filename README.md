@@ -1,5 +1,7 @@
 # This program makes output like this:
 
+With no args:
+
  | Power | Number | Bitshift | 
  | --- | --- | --- | 
  | 2^4 | 16 | 1u << 4u | 
@@ -62,5 +64,25 @@
  | 2^61 | 2,305,843,009,213,693,952 | 1u << 61u | 
  | 2^62 | 4,611,686,018,427,387,904 | 1u << 62u | 
  | 2^63 | 9,223,372,036,854,775,808 | 1u << 63u | 
+
+or, if you pass a number, it'll give you the closest either side powers of two, i.e:
+```sh
+cargo run 1,34,21,77
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.02s
+     Running `target/debug/powersof2 1,34,21,77`
+```
+| Power | Number | Bitshift |
+| --- | --- | --- |
+| 2^20 | 1,048,576 | 1u << 20u |
+| 2^21 | 2,097,152 | 1u << 21u |
+| 2^22 | 4,194,304 | 1u << 22u |
+
+and for exact hits:
+
+| Power | Number | Bitshift |
+| --- | --- | --- |
+| 2^26 | 67,108,864 | 1u << 26u |
+| **2^27** | **134,217,728** | **1u << 27u** |
+| 2^28 | 268,435,456 | 1u << 28u |
 
 and that is all. 
