@@ -11,7 +11,7 @@ fn main() {
     table.add_row(Row::new(vec![Cell::new("| Power | Number | Bitshift |")]));
     table.add_row(Row::new(vec![Cell::new("| --- | --- | --- |")]));
 
-    let powers: Vec<(u32, u64)> = (4..=63).map(|x| (x, 2u64.pow(x))).collect();
+    let powers: Vec<(u32, u128)> = (4..=127).map(|x| (x, 2u128.pow(x))).collect();
 
     if args.len() <= 1 {
         let mut is_blue = true;
@@ -34,7 +34,7 @@ fn main() {
             let mut is_blue = true;
 
             for (n, val) in powers.iter() {
-                if *val < target as u64 {
+                if *val < target as u128 {
                     continue;
                 }
                 if let Some(previous) = powers.iter().find(|&&(prev_n, _)| prev_n == n - 1) {
@@ -50,7 +50,7 @@ fn main() {
                     is_blue = !is_blue;
                 }
 
-                if *val == target as u64 {
+                if *val == target as u128 {
                     let row = Row::new(vec![Cell::new(&format!(
                         "\x1b[32m| **2^{}** | **{}** | **1u << {}u** |\x1b[0m",
                         n,
